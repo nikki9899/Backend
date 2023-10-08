@@ -3,18 +3,19 @@ import mongoose from "mongoose";
 import { Product } from "@/lib/model/product";
 import { NextResponse } from "next/server";
 
-export  async function getHandler(req, res) {
+export  async function GET(req, res) {
   let data = [];
-  try {
-    await mongoose.connect(connectionSrt);
-    data = await Product.find();
-  } catch (error) {
-    data = { success: false };
+  let success = true;
+  try{
+      await mongoose.connect(connectionSrt);
+      data = await Product.find();
+  }catch(error){
+      data = {result:"error"}
+      success = false
   }
-
-  res.json({ data });
+  return NextResponse.json({result:data,success})
 }
-export default async function postHandler(req, res) {
+export async function postHandler(req, res) {
     try {
       await mongoose.connect(connectionSrt);
   
