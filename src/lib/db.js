@@ -1,0 +1,1 @@
+export const connectionSrt="mongodb+srv://nikkidagar5316:Nikki@cluster0.jrbyzmb.mongodb.net/productDB?retryWrites=true&w=majority"
